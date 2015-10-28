@@ -5,7 +5,7 @@ container for use during the [Data Science at Scale Specialization](https://www.
 
 For ease of use a script named 'container.sh' can be used to manage the entire 
 lifecycle and interaction with the Docker container. Git, Python, R, and SQLite
-are installed as part of the image along with the Python package oaith2.
+are installed as part of the image along with the Python package oauth2.
 Additionally, other Python packages and R packages can be added after the 
 container is created.
 
