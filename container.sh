@@ -86,7 +86,7 @@ function manage_container() {
 					grep ^${3%:*} |\
 				       	cut -d\  -f1` ]
 				then
-					if [[ ! -z `echo ${3} | grep .+\/`  ]]
+					if [[ ! -z `echo ${3} | grep /`  ]]
 					then
 						docker pull ${3}
 					else
@@ -116,7 +116,7 @@ function manage_container() {
 							--volume=/tmp/.X11-unix:/tmp/.X11-unix \
 							--env=DISPLAY=unix$DISPLAY \
 							--name=${2} \
-							--volume=${4}:/home/gdst/data \
+							--volume=${4}:/home/dst/data \
 							${3}
 				fi
 			else

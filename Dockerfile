@@ -2,7 +2,7 @@
 # Data Science Toolbox for Data Science at Scale Specialization               #
 #                                                                             #
 # Build a Docker image for the Data Science at Scale Specialization           #
-# Johns Hopkins University                                                    #
+# University of Washington                                                    #
 #                                                                             #
 # Version 0.1, Copyright (C) 2015 Gregory D. Horne                            #
 #                                 (horne at member dot fsf dot org)           #
@@ -28,6 +28,7 @@ RUN		dpkg-reconfigure locales \
 		&& locale-gen ${LOCALE} \
 		&& /usr/sbin/update-locale LANG=${LOCALE}
 
+
 # miscellaneous packages
 #
 RUN     apt-get install --yes --no-install-recommends \
@@ -37,10 +38,12 @@ RUN     apt-get install --yes --no-install-recommends \
         wget \
         ca-certificates
 
+
 # Git command line client
 
 RUN		apt-get install --yes git git-doc \
 		&& git config --system push.default simple
+
 
 # Python
 
@@ -97,7 +100,8 @@ ENV		HOME /home/${DST_USER}
 
 RUN		useradd --create-home --shell /bin/bash ${DST_USER} \
 		&& echo "${DST_USER}:science" | chpasswd \
-		&& mkdir ${HOME}/bin
+		&& mkdir ${HOME}/bin \
+		&& mkdir ${HOME}/tmp
 
 
 # Console/terminal managememnt, text editor and text editor plug-in manager
@@ -109,6 +113,7 @@ RUN		apt-get install --yes screen vim \
 		&& mkdir ${HOME}/data
 
 ADD		vimrc ${HOME}/.vimrc
+
 
 RUN		chown -R ${DST_USER}:${DST_USER} ${HOME}
 
